@@ -25,13 +25,13 @@ from sklearn.datasets import make_blobs
 import requests, zipfile
 import io
 
-zip_file_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip'
+zip_file_url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip'
 
 r = requests.get(zip_file_url, stream = True)
 z = zipfile.ZipFile(io.BytesIO(r.content))
-z.extractall()
+z.extractall(path = './chap9')
 
 #対象データの読み込み
-bank = pd.read_csv('bank-full.csv', sep = ';')
+bank = pd.read_csv('./chap9/bank-full.csv', sep = ';')
 bank.head()
 
